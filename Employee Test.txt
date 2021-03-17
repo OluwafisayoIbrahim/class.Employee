@@ -1,0 +1,49 @@
+// EmployeeTest.cs
+// Display yearly salary for 2 employees, then give them 10% raises and redisplay new salaries
+
+using System;
+
+class EmployeeTest
+{
+static void Main()
+{
+    Employee employee1 = new Employee("Jim", "Halpert", 7501.00m);
+    Employee employee2 = new Employee("Dwight", "Shrute", 7499.00m);
+
+    // display each employee's monthly salary
+    Console.WriteLine($"{employee1.First} {employee1.Last}'s monthly salary: {employee1.Salary:C}");
+    Console.WriteLine($"{employee2.First} {employee2.Last}'s monthly salary: {employee2.Salary:C}");
+
+    // display each employee's yearly salary
+    Console.WriteLine($"\n{employee1.First} {employee1.Last}'s yearly salary: {GetYearlySalary1(employee1):C}");
+    Console.WriteLine($"{employee2.First} {employee2.Last}'s yearly salary: {GetYearlySalary2(employee2):C}");
+
+    //prompt for raise amount
+    Console.WriteLine($"\nEnter raise percent for {employee1.First} {employee1.Last}: ");
+    decimal raiseAmount1 = decimal.Parse(Console.ReadLine());
+    Console.WriteLine($"\nEnter raise percent for {employee2.First} {employee2.Last}: ");
+    decimal raiseAmount2 = decimal.Parse(Console.ReadLine());
+
+    //display yearly salary plus raise amount
+    Console.WriteLine($"\n{employee1.First} {employee1.Last}'s yearly salary: {GetNewSalary1(employee1):C}");
+    Console.WriteLine($"{employee2.First} {employee2.Last}'s yearly salary: {GetNewSalary2(employee2):C}");
+}
+
+private static decimal GetYearlySalary1(Employee employee1)
+{
+    return employee1.YearlySalary;
+}
+
+private static decimal GetYearlySalary2(Employee employee2)
+{
+    return employee2.YearlySalary;
+}
+
+private static decimal GetNewSalary1(Employee employee1)
+{
+    return employee1.Annual;
+}
+
+private static decimal GetNewSalary2(Employee employee2)
+{
+    return employee2.Annual;
