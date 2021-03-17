@@ -1,0 +1,69 @@
+class Employee
+{
+    public string FirstName { get; set; }   // auto-implemented property employee's First Name
+    public string LastName { get; set; } // auto-implemented property employee's Last Name
+    private decimal salary; // instance variable
+    private decimal yearlySalary;
+    private decimal annual;
+
+// Account constructor that receives three parameters
+public Employee(string firstName, string lastName, decimal monthlySalary)
+{
+    First = firstName;
+    Last = lastName;
+    Salary = monthlySalary;
+    Annual = yearlySalary;
+}
+
+//Salary property with validation
+public decimal Salary
+{
+    get
+    {
+        return salary;
+    }
+    private set
+    {
+        if (value > 0.0m)
+        {
+            salary = value;
+        }
+    }
+}
+
+public string Last { get; private set; }
+public string First { get; private set; }
+
+public decimal YearlySalary
+{
+    get
+    {
+        return yearlySalary;
+    }
+
+    set
+    {
+        yearlySalary = Salary * 12;
+    }
+}
+
+public decimal Annual
+{
+    get
+    {
+        return annual;
+    }
+
+    set
+    {
+        annual = yearlySalary * 12;
+    }
+}
+
+public void Raise(decimal raiseAmount)
+{
+    if (raiseAmount > 0.0m)
+    {
+        Salary = Salary + raiseAmount;
+    }
+}
