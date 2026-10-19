@@ -1,0 +1,19 @@
+name: Employee checks
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build
+        run: dotnet build Employee.slnx --configuration Release
+      - name: Test
+        run: dotnet run --project tests/Employee.Tests --configuration Release --no-build
+      - name: Verify demo
+        run: dotnet run --project Employee.csproj --configuration Release --no-build -- --demo
